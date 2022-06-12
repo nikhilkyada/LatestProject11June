@@ -41,11 +41,10 @@ public class RegistrationPage extends Utils {
         //Enter Last name
         driverSendKeys(_lastnameField, loadProp.getProperty("lastname"));
 
-        //properties
 
         //Birth Day-----------------------------------------------------------------------------Birthdate & All
         Select selectDay = new Select(driver.findElement(_birthdate));
-        selectDay.selectByIndex(Integer.parseInt(loadProp.getProperty("dobDay")));
+        selectDay.selectByValue(loadProp.getProperty("dobDay"));
         //Month
         Select selectMonth = new Select(driver.findElement(_birthMonth));
         selectMonth.selectByValue(loadProp.getProperty("dobMonth"));

@@ -23,21 +23,41 @@ public class DriverManager extends Utils{
 //    boolean cloud =true;
 
         String browserName = System.getProperty("browser");
-//    String browserName = "chrome";
+//    String browserName = "edge";
 
 
     public void openBrowser(){
         if(cloud){
-            System.out.println("Running in cloud");
+            System.out.println("Running in cloud...");
             //applying conditional loop for web-browser selection
             if (browserName.equalsIgnoreCase("Chrome")){
+                System.out.println("Chrome");
+                //Chrome
                 caps.setCapability("os", "Windows");
                 caps.setCapability("os_version", "11");
                 caps.setCapability("browser", "Chrome");
                 caps.setCapability("browser_version", "latest");
                 caps.setCapability("browserstack.local", "false");
                 caps.setCapability("browserstack.selenium_version", "4.0.0");
-        }else{
+        }else if (browserName.equalsIgnoreCase("firefox")){
+                System.out.println("Firefox");
+                //Firefox
+                caps.setCapability("os", "Windows");
+                caps.setCapability("os_version", "10");
+                caps.setCapability("browser", "Firefox");
+                caps.setCapability("browser_version", "latest");
+                caps.setCapability("browserstack.local", "false");
+                caps.setCapability("browserstack.selenium_version", "3.10.0");
+            }else if (browserName.equalsIgnoreCase("Edge")){
+                System.out.println("Edge");
+                //EDGE
+                caps.setCapability("os", "Windows");
+                caps.setCapability("os_version", "10");
+                caps.setCapability("browser", "Edge");
+                caps.setCapability("browser_version", "101.0");
+                caps.setCapability("browserstack.local", "false");
+                caps.setCapability("browserstack.selenium_version", "3.5.2");
+            }else{
                 System.out.println("Your Browser name is wrong");
             }
             try {
@@ -50,16 +70,19 @@ public class DriverManager extends Utils{
             System.out.println("Running Locally...");
 
         if(browserName.equalsIgnoreCase("Chrome")) {
+            System.out.println("Chrome");
             //Open Chrome
             System.setProperty("webdriver.chrome.driver", "src/test/java/Drivers/chromedriver.exe");
             driver = new ChromeDriver();  // import chrome web-Driver dependency (In 'POM' file)
 
         }else if(browserName.equalsIgnoreCase("Firefox")) {
+            System.out.println("Firefox");
             //Firefox
             System.setProperty("webdriver.gecko.driver","src/test/java/Drivers/geckodriver.exe" );
             driver= new FirefoxDriver();
 
         }else if(browserName.equalsIgnoreCase("Edge")){
+            System.out.println("Edge");
             //Edge
             System.setProperty("webdriver.edge.driver","src/test/java/Drivers/msedgedriver.exe");
             driver = new EdgeDriver();
